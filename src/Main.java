@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         var game = new PokerConsole<>(new PokerGame("TexasHoldEm") );
-        game.playGame(game.addPlayer(5));
+        game.playGame(game.addPlayer(4));
 
     }
 }

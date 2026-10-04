@@ -26,12 +26,12 @@ public enum ScoredCard {
     ACE(0,12),
     PAIRS(0),
     THREE_OF_A_KIND(0),
-    STRAIGHT(30),
-    FLUSH(35),
-    FULL_HOUSE(40),
-    FOUR_OF_A_KIND(45),
-    STRAIGHT_FLUSH(50),
-    ROYAL_FLUSH(55);
+    STRAIGHT(250),
+    FLUSH(260),
+    FULL_HOUSE(270),
+    FOUR_OF_A_KIND(0),
+    STRAIGHT_FLUSH(290),
+    ROYAL_FLUSH(300);
 
     private final int defaultScore;
     private int faceValue = 0;
@@ -135,7 +135,7 @@ public enum ScoredCard {
                 Map<Integer, Integer> map = TexasHoldEm(kaarten);
                 yield map.entrySet().stream()
                         .filter(entry -> entry.getValue() >= 2)
-                        .mapToInt(entry -> entry.getKey() * 2)
+                        .mapToInt(entry -> entry.getKey() * 2 + 50)
                         .findFirst()
                         .orElse(0);
             }
@@ -143,7 +143,7 @@ public enum ScoredCard {
                 Map<Integer, Integer> map = TexasHoldEm(kaarten);
                 yield map.entrySet().stream()
                         .filter(entry -> entry.getValue() == 3)
-                        .mapToInt(entry -> entry.getKey() * 3)
+                        .mapToInt(entry -> entry.getKey() * 3 + 100)
                         .findFirst()
                         .orElse(0);
             }
@@ -161,7 +161,7 @@ public enum ScoredCard {
                 yield map.entrySet()
                         .stream()
                         .filter(entry -> entry.getValue() == 4)
-                        .mapToInt(entry -> entry.getKey() * 4)
+                        .mapToInt(entry -> entry.getKey() * 4 + 100)
                         .findFirst()
                         .orElse(0);
             }
